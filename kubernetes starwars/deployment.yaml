@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starwars-api
+  labels:
+    app: starwars
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: starwars
+  template:
+    metadata:
+      labels:
+        app: starwars
+    spec:
+      containers:
+      - name: starwars-api
+        image: starwars-api:latest
+        ports:
+        - containerPort: 8000

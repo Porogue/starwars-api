@@ -1,0 +1,11 @@
+version: '3.8' # Versión de docker-compose
+
+services:
+  starwars-api-app:
+    build: starwars/
+    container_name: starwars-api
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
