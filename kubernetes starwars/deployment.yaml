@@ -17,5 +17,6 @@ spec:
       containers:
       - name: starwars-api
         image: starwars-api:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8000
