@@ -2,13 +2,20 @@ from fastapi import FastAPI, HTTPException
 import requests
 import logging
 
-SWAPI_BASE_URL = "https://swapi.dev/api/people/"
+SWAPI_BASE_URL = "https://swapi.info/api/people"
 
 app = FastAPI()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+@app.get("/get/{id}")
+def get_character(id: int):
+    logger.info("Getting character data from SWAPI")
+    url = f"{SWAPI_BASE_URL}/{id}"
+    response = requests.get(url)
+    return response.json()
 
 @app.get("/fetch")
 def fetch_data():
